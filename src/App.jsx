@@ -26,32 +26,32 @@ function App() {
 
   return (
     <div className="main-page">
-      <h1 style={{ textAlign: 'center', color: '#ff6600', fontSize: '3rem' }}>
-        Naruto Shinobi Archive
-      </h1>
+      <h1>Shinobi Archive</h1>
+  
+  <div className="filter-container">
+    {['Tutti', 'Foglia', 'Sabbia', 'Alba'].map(v => (
+      <button key={v} onClick={() => setFiltro(v)}>{v}</button>
+    ))}
+  </div>
 
-      <div className="filter-container" style={{ textAlign: 'center', marginBottom: '20px' }}>
-        <button onClick={() => setFiltro('Tutti')}>Tutti</button>
-        <button onClick={() => setFiltro('Foglia')}>Foglia</button>
-        <button onClick={() => setFiltro('Sabbia')}>Sabbia</button>
-        <button onClick={() => setFiltro('Alba')}>Alba</button>
+  <div className="ninja-grid">
+    {ninjaFiltrati.map((ninja) => (
+      <div className={`ninja-card ${ninja.villaggio.toLowerCase()}`} key={ninja.id}>
+        <div className="card-header">
+          <img src={ninja.img} alt={ninja.nome} />
+        </div>
+        <div className="card-body">
+          <h2>{ninja.nome}</h2>
+          <p>Villaggio: <span>{ninja.villaggio}</span></p>
+          <p>Tecnica: <span>{ninja.tecnica}</span></p>
+          <button className="btn-atk" onClick={() => alert(ninja.tecnica)}>
+            Esegui Jutsu
+          </button>
+        </div>
       </div>
-
-      <div className="container">
-        {ninjaFiltrati.map((ninja) => (
-          <div className="ninja-card" key={ninja.id}>
-            <img src={ninja.img} alt={ninja.nome} />
-            <h2>{ninja.nome}</h2>
-            <p><strong>Villaggio:</strong> {ninja.villaggio} </p>
-            <p><strong>Tecnica:</strong> {ninja.tecnica} </p>
-            <button onClick={() => alert(`Attivazione: ${ninja.tecnica}`)}>
-              Attacca!
-            </button>
-          </div>
-        ))}
-      </div>
-          
-    </div>
+    ))}
+  </div>
+</div>
   );
 }
 
