@@ -1,26 +1,31 @@
 # 🍥 Naruto Shinobi Archive - Sito Vetrina Dinamico
 
-Benvenuti nel **Naruto Shinobi Archive**! Questo progetto nasce come palestra per imparare le basi dello sviluppo Web, unendo il mondo dei ninja di Masashi Kishimoto alla programmazione Full-Stack.
+Benvenuti nel **Naruto Shinobi Archive**! Questo progetto è una palestra per consolidare le competenze di sviluppo Web, unendo il mondo dei ninja di Masashi Kishimoto alla programmazione Full-Stack moderna.
 
 ## 🎯 Obiettivo del Progetto
 
-L'obiettivo è creare una piattaforma dinamica dove le schede dei personaggi non sono statiche, ma vengono generate automaticamente partendo da un database (o file di logica) nel Backend.
+Creare una piattaforma dinamica dove le schede dei personaggi vengono generate automaticamente. L'obiettivo è passare da una struttura statica a una guidata dai dati (Data-Driven), separando la presentazione (Frontend) dalla gestione dei dati (Backend).
 
 ## 🛠️ Tecnologie Utilizzate (Stack)
 
-- **Frontend:** HTML5, CSS3 (con stile ispirato al design manga/anime).
-- **Backend:** [Inserisci qui la tecnologia che useremo, es: JavaScript/Node]
-- **Logica:** Gestione dinamica dei dati (Villaggi, Tecniche, Clan).
+Il progetto sfrutta strumenti professionali per garantire velocità e scalabilità:
+
+- **Sviluppo Locale:** [Node.js](Il motore per l'ambiente di sviluppo).
+- **Build Tool:** [Vite](Per un caricamento istantaneo e un workflow moderno).
+- **Frontend Framework:** [React](Per creare componenti riutilizzabili come le "Ninja Cards").
+- **Styling:** CSS3 (Custom design con palette colori ispirata all'anime: Arancione Naruto #FF6600).
+- **Linguaggio:** JavaScript (ES6+).
 
 ## 🚀 Funzionalità principali
 
-- [ ] **Dashboard Ninja:** Visualizzazione delle card dei personaggi.
-- [ ] **Filtri per Villaggio:** Possibilità di distinguere i ninja della Foglia, Sabbia, Nuvola, ecc.
-- [ ] **Scheda Tecnica:** Dettagli su tipo di Chakra e Jutsu principale.
-- [ ] **Gestione Dinamica:** Aggiunta di nuovi ninja dal backend senza toccare il codice HTML.
+- [x] **Setup Ambiente:** Configurazione di Vite + React su VS Code.
+- [x] **Componentizzazione:** Creazione dello "stampo" (Componente) per le card dei ninja.
+- [ ] **Dashboard Dinamica:** Mapping di una lista di ninja da un archivio dati.
+- [ ] **Filtri per Villaggio:** Sistema per distinguere ninja della Foglia, Sabbia, Nuvola, ecc.
+- [ ] **Backend Simulato:** Gestione dei dati tramite memoria volatile o file JSON.
 
-## 📁 Struttura della Cartella
+## 📁 Struttura del Progetto
 
-- `/frontend`: Contiene i file HTML e i fogli di stile CSS.
-- `/backend`: Contiene la logica e l'archivio dei dati dei personaggi.
-- `/assets`: Immagini dei ninja e icone dei villaggi.
+- `src/App.jsx`: Contiene il componente principale e la logica di visualizzazione.
+- `src/App.css`: Tutti gli stili personalizzati (bordi arancioni, ombre e layout).
+- `src/main.jsx`: Il punto di ingresso tecnico di React.
