@@ -35,10 +35,11 @@ body {
 /* L'immagine del Ninja */
 .ninja-card img {
   width: 100%;
-  height: 200px;
+  height: 300px;
   object-fit: cover; /* Evita che l'immagine si schiacci */
   border-radius: 10px;
   margin-bottom: 15px;
+  background-color: #ddd
 }
 
 /* Titoli e testi */
