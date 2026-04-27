@@ -1,0 +1,31 @@
+body {
+ background-color: #f0f0f0;
+ font-family: 'Segoe UI', sans-serif;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+}
+
+.ninja-card {
+  background-color: white;
+  border: 3px solid #ff6600;
+  border-radius: 15px;
+  padding: 20px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+ninja-card img{
+  width: 100%;
+  border-radius: 10px;
+}
+
+button {
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
