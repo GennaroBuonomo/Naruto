@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import './App.css';
+
 
 const listaNinja = [
   { id: 1, nome: "Naruto Uzumaki", tecnica: "Rasengan", villaggio: "Foglia", img: "/images/image 1 .jpg" },
@@ -16,14 +18,27 @@ const listaNinja = [
 ];
 
 function App() {
+ const [ filtro, setFiltro ] = useState('Tutti')
+
+ const ninjaFiltrati = filtro === 'Tutti'
+ ?listaNinja
+ :listaNinja.filter(ninja => ninja.villaggio === filtro)
+
   return (
     <div className="main-page">
       <h1 style={{ textAlign: 'center', color: '#ff6600', fontSize: '3rem' }}>
         Naruto Shinobi Archive
       </h1>
 
+      <div className="filter-container" style={{ textAlign: 'center', marginBottom: '20px' }}>
+        <button onClick={() => setFiltro('Tutti')}>Tutti</button>
+        <button onClick={() => setFiltro('Foglia')}>Foglia</button>
+        <button onClick={() => setFiltro('Sabbia')}>Sabbia</button>
+        <button onClick={() => setFiltro('Alba')}>Alba</button>
+      </div>
+
       <div className="container">
-        {listaNinja.map((ninja) => (
+        {ninjaFiltrati.map((ninja) => (
           <div className="ninja-card" key={ninja.id}>
             <img src={ninja.img} alt={ninja.nome} />
             <h2>{ninja.nome}</h2>
