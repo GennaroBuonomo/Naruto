@@ -19,14 +19,20 @@ const listaNinja = [
 
 function App() {
  const [ filtro, setFiltro ] = useState('Tutti')
+ const [ ricerca, setRicerca ] = useState('')
 
- const ninjaFiltrati = filtro === 'Tutti'
- ?listaNinja
- :listaNinja.filter(ninja => ninja.villaggio === filtro)
+ const ninjaFiltrati = listaNinja.filter(ninja => {
+  const matchVillaggio = filtro === 'Tutti' || ninja.villaggio === filtro;
+  const matchNome = ninja.nome.toLowerCase().includes(ricerca.toLowerCase());
+  return matchVillaggio && matchNome;
+ });
 
   return (
     <div className="main-page">
       <h1>Shinobi Archive</h1>
+
+      {/* --- Barra di Ricerca --- */}
+      
   
   <div className="filter-container">
     {['Tutti', 'Foglia', 'Sabbia', 'Alba'].map(v => (
