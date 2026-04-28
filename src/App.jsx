@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 
@@ -18,14 +18,40 @@ const listaNinja = [
 ];
 
 function App() {
+
+  const [ninjas, setNinjas] = useState(() => {
+    const salvati = localStorage.getItem("database-ninja");
+    return salvati ? JSON.parse(salvati) : listaNinja;
+  });
+
  const [ filtro, setFiltro ] = useState('Tutti')
  const [ ricerca, setRicerca ] = useState('')
+    
+ // --- STATI PER IL MODALE JUTSU --- //
+ const [modaleAperto, setModaleAperto] = useState(false);
+  const [infoJutsu, setInfoJutsu] = useState({ nomeNinja: '', nomeTecnica: '' });
 
- const ninjaFiltrati = listaNinja.filter(ninja => {
+ useEffect(() => {
+    localStorage.setItem("database-ninja", JSON.stringify(ninjas));
+  }, [ninjas]);
+
+ const ninjaFiltrati = ninjas.filter(ninja => {
   const matchVillaggio = filtro === 'Tutti' || ninja.villaggio === filtro;
   const matchNome = ninja.nome.toLowerCase().includes(ricerca.toLowerCase());
   return matchVillaggio && matchNome;
  });
+
+ const eliminaNinja = (id) => {
+    setNinjas(ninjas.filter(n => n.id !== id));
+  };
+         // --- FUNZIONE PER APRIRE IL MODALE --- //
+  const attivaJutsu = (ninja) => {
+    setInfoJutsu({ nomeNinja: ninja.nome, nomeTecnica: ninja.tecnica });
+    setModaleAperto(true);
+
+    setTimeout(() => setModaleAperto(false), 6000)
+
+  };
 
   return (
     <div className="main-page">
@@ -65,7 +91,7 @@ function App() {
                 <h2>{ninja.nome}</h2>
                 <p>Villaggio: <span>{ninja.villaggio}</span></p>
                 <p>Tecnica: <span>{ninja.tecnica}</span></p>
-                <button className="btn-atk" onClick={() => alert(`Tecnica Segreta: ${ninja.tecnica}!`)}>
+                <button className="btn-atk" onClick={() => attivaJutsu(ninja)}>
                   Esegui Jutsu
                 </button>
               </div>
@@ -76,6 +102,17 @@ function App() {
           <h2 className="no-results">Nessun ninja trovato nel database...</h2>
         )}
       </div>
+      {modaleAperto && (
+        <div className="modal-overlay" onClick={() => setModaleAperto(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="chakra-effect"></div> {/* Effetto visivo decorativo */}
+            <span className="close-modal" onClick={() => setModaleAperto(false)}>×</span>
+            <h2>ATTIVAZIONE JUTSU!</h2>
+            <p className="ninja-attacker">{infoJutsu.nomeNinja}</p>
+            <p className="jutsu-name">{infoJutsu.nomeTecnica}</p>
+          </div>
+        </div>
+      )}
   </div>
   );
 }

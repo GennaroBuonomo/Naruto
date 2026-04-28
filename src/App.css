@@ -164,3 +164,110 @@ h1 {
   font-family: 'Audiowide';
   margin-top: 50px;
 }
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85); /* Molto scuro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Sopra a tutto */
+  backdrop-filter: blur(5px); /* Sfoca lo sfondo */
+  animation: fadeIn 0.3s ease;
+}
+
+/* La finestra vera e propria */
+.modal-content {
+  background: #0a0a0c;
+  border: 2px solid #ff6600;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  position: relative;
+  min-width: 300px;
+  max-width: 90%;
+  box-shadow: 0 0 30px rgba(255, 102, 0, 0.5); /* Bagliore Chakra */
+  animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden; /* Per l'effetto chakra interno */
+}
+
+/* Tasto chiudi (X) */
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  color: #aaa;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close-modal:hover {
+  color: #ff6600;
+  transform: rotate(90deg);
+}
+
+/* Titolo del modale */
+.modal-content h2 {
+  font-family: 'Permanent Marker', cursive; /* Stile brush/manga */
+  color: #fff;
+  font-size: 2rem;
+  margin-top: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 0 #000;
+}
+
+/* Nome del Ninja */
+.ninja-attacker {
+  font-family: 'Audiowide', sans-serif;
+  color: #ff6600;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+/* Nome della Tecnica */
+.jutsu-name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
+  margin: 10px 0;
+  text-transform: uppercase;
+  font-family: 'Permanent Marker', cursive;
+  background: linear-gradient(180deg, #fff 0%, #aaa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px rgba(255,102,0,0.8));
+}
+
+/* Effetto Chakra decorativo interno */
+.chakra-effect {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,102,0,0.1) 0%, transparent 70%);
+  animation: rotateChakra 10s linear infinite;
+  z-index: -1; /* Dietro al testo */
+}
+
+/* --- ANIMAZIONI --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes rotateChakra {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
