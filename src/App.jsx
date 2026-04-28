@@ -32,32 +32,51 @@ function App() {
       <h1>Shinobi Archive</h1>
 
       {/* --- Barra di Ricerca --- */}
-      
+      <div className="search-container">
+        <input 
+        type="text"
+        placeholder="Cerca un ninja... " 
+        value={ricerca}
+        onChange={(e) => setRicerca(e.target.value)}         
+        />
+      </div>
   
   <div className="filter-container">
     {['Tutti', 'Foglia', 'Sabbia', 'Alba'].map(v => (
-      <button key={v} onClick={() => setFiltro(v)}>{v}</button>
+      <button 
+      key={v} 
+      className={filtro === v ? 'btn-filter active' : 'btn-filter'}
+      onClick={() => setFiltro(v)}
+      >
+        {v}
+      </button>
     ))}
   </div>
 
-  <div className="ninja-grid">
-    {ninjaFiltrati.map((ninja) => (
-      <div className={`ninja-card ${ninja.villaggio.toLowerCase()}`} key={ninja.id}>
-        <div className="card-header">
-          <img src={ninja.img} alt={ninja.nome} />
-        </div>
-        <div className="card-body">
-          <h2>{ninja.nome}</h2>
-          <p>Villaggio: <span>{ninja.villaggio}</span></p>
-          <p>Tecnica: <span>{ninja.tecnica}</span></p>
-          <button className="btn-atk" onClick={() => alert(ninja.tecnica)}>
-            Esegui Jutsu
-          </button>
-        </div>
+<div className="ninja-grid">
+        {ninjaFiltrati.length > 0 ? (
+          // SE CI SONO NINJA: mostriamo la mappa
+          ninjaFiltrati.map((ninja) => (
+            <div className={`ninja-card ${ninja.villaggio.toLowerCase()}`} key={ninja.id}>
+              <div className="card-header">
+                <img src={ninja.img} alt={ninja.nome} />
+              </div>
+              <div className="card-body">
+                <h2>{ninja.nome}</h2>
+                <p>Villaggio: <span>{ninja.villaggio}</span></p>
+                <p>Tecnica: <span>{ninja.tecnica}</span></p>
+                <button className="btn-atk" onClick={() => alert(`Tecnica Segreta: ${ninja.tecnica}!`)}>
+                  Esegui Jutsu
+                </button>
+              </div>
+            </div>
+          ))
+        ) : (
+          // ALTRIMENTI: mostriamo il messaggio d'errore
+          <h2 className="no-results">Nessun ninja trovato nel database...</h2>
+        )}
       </div>
-    ))}
   </div>
-</div>
   );
 }
 

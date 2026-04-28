@@ -129,3 +129,38 @@ h1 {
   background: #ff6600;
   color: #000;
 }
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-container input {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 20px;
+  background: #141417;
+  border: 1px solid #2a2a30;
+  border-radius: 10px;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  transition: 0.3s;
+  outline: none;
+}
+
+.search-container input:focus {
+  border-color: #ff6600;
+  box-shadow: 0 0 10px rgba(255, 102, 0, 0.2);
+  transform: scale(1.02);
+}
+
+/* Messaggio se non trovi ninja */
+.no-results {
+  text-align: center;
+  color: #ff6600;
+  grid-column: 1 / -1; /* Occupa tutta la riga nella griglia */
+  font-family: 'Audiowide';
+  margin-top: 50px;
+}
